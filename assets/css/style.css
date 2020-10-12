@@ -380,13 +380,13 @@ section {
 /* animation styles */
 
 .trainer-1 {
-    background-image: url("./trainer-1.jpg");
+    background-image: url("../images/trainer-1.jpg");
 }
 .trainer-2 {
-    background-image: url("./assets/images/trainer-2.jpg");
+    background-image: url("../images/trainer-2.jpg");
 }
 .trainer-3 {
-    background-image: url("./assets/images/trainer-3.jpg");
+    background-image: url("../images/trainer-3.jpg");
 }
 .trainer {
     background-image: linear-gradient(rgba(252, 225, 56, 0.3)80%);
