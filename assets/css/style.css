@@ -421,9 +421,6 @@ section {
     opacity: 1;
     transition: 0.4s;
 }
-.trainer:hover .trainer-img h3, .trainer:hover .trainer-img h4 {
-
-}
 .trainer-bio h3 {
     font-size: 28px;
     opacity: 0;
