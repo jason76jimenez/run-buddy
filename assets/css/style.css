@@ -20,7 +20,6 @@ body {
 header {
     background-image: url("../images/hero-bg.jpg");
     background-size: cover;
-    background-position: center;
     padding: 20px 35px;
     background-color: var(--tertiary-color);
     display: flex;
@@ -67,13 +66,7 @@ header nav ul li a:hover {
     text-shadow: none;
 }
 
-/* hero image was in all <section> so added "hero here to remove image from other <section> this was not in assignment */
-section {
-    padding: 60px;
-}
-
 /* homepage hero style start */
-
 .hero {
     background-image: url("../images/hero-bg.jpg");
     background-size: cover;
@@ -203,9 +196,8 @@ section {
   .checkbox-wrapper input:checked + label::after, .radio-wrapper input:checked + label::after {
   content: "";
 }
-/* hero styles end */
-/* what you do styling follows */
 
+/* what you do styling */
 .step {
     margin: 50px auto;
     padding-bottom: 50px;
@@ -254,7 +246,6 @@ section {
 }
 
 /* Reach out section CSS */
-
 .contact {
     background-color: var(--secondary-color);
     text-align: center;
@@ -321,8 +312,8 @@ section {
     color: var(--primary-color);
     background: var(--tertiary-color);
 }
-/* command styles end */
 
+/* command styles end */
 .section-title {
     font-size: 48px;
     color: var(--secondary-color);
@@ -340,7 +331,6 @@ section {
 }
 
 /* trainer styling */
-
 .trainer {
     margin: 20px;
     background: var(--secondary-color);
@@ -354,12 +344,14 @@ section {
     flex-wrap: wrap;
     justify-content: space-around;
 }
-.trainer-img {
+.trainer-img{
     width: 100%;
     min-height: 300px;
     display: flex;
     padding: 15px;
     align-items: flex-end;
+    overflow: hidden;
+    z-index: 0;
 }
 .trainer-bio {
     padding: 25px;
@@ -368,75 +360,77 @@ section {
 .trainer h3 {
     font-size: 28px;
     margin-bottom: 5px;
+    position: relative;
+    top: 200px;
 }
 .trainer h4 {
     font-weight: lighter;
     font-size: 22px;
     margin-bottom: 15px;
+    position: relative;
+    top: 200px;
 }
 .trainer-bio p {
     font-size: 17px;
 }
-/* animation styles */
 
+/* animation styles */
 .trainer-1 {
     background-image: url("../images/trainer-1.jpg");
+    position: relative;
+    background: linear-gradient(rgba(252,225,56,0.3), var(--secondary-color));
+z-index: 100;
 }
 .trainer-2 {
     background-image: url("../images/trainer-2.jpg");
+    position: relative;
+    background: linear-gradient(rgba(252,225,56,0.3), var(--secondary-color));
 }
 .trainer-3 {
     background-image: url("../images/trainer-3.jpg");
+    position: relative;
+    background: linear-gradient(rgba(252,225,56,0.3), var(--secondary-color));
 }
-.trainer {
-    background-image: linear-gradient(rgba(252, 225, 56, 0.3)80%);
-}
-
 .trainer-img::after {
     content: "";
     height: 100%;
     width: 100%;
-    background: rbga(252, 225, 56, 0);
+    background: rgba(252, 225, 56, 0.3);
     position: absolute;
     top: 0;
     left: 0;
+    opacity: 0;
+    transition: all 1s ease-in;
 }
 .trainer-img h3 {
-    position: relative;
-    z-index: auto;
+    z-index: 1;
     font-size: 28px;
-    top: 200px;
-    overflow: visible;
+    /* overflow: visible; */
     transition: 0.6;
+    margin-bottom: 5px;
 }
 .trainer-img h4 {
-    position: relative;
-    z-index: auto;
+    z-index: 1;
     font-size: 22px;
-    top: 200px;
-    overflow: visible;
+    /* overflow: visible; */
     transition: 0.6;
 }
-.trainer:hover {
+.trainer:hover .trainer-img h3, .trainer:hover .trainer-img h4 {
     opacity: 1;
     transition: 0.4s;
 }
 .trainer-bio h3 {
     font-size: 28px;
-    opacity: 0;
-    visibility: hidden;
-    display: none;
+    display: inline;
 }
 .trainer-bio h4 {
     font-weight: lighter;
     font-size: 22px;
     margin-bottom: 15px;
-    visibility: hidden;
-    display: none;
+    display: inline;
 }
 
 /* footer */
-
 footer {
     background: var(--primary-color);
     width: 100%;
@@ -452,7 +446,7 @@ footer h2 {
 }
 footer div {
     line-height: 1.5;
-    text-align: right
+    text-align: right;
 }
 footer a {
     color: var(--secondary-color);
@@ -508,7 +502,6 @@ footer a {
 }
 
 /* media query for smaller desktop screens and smaller style */
-
 @media screen and (max-width: 980px) {
     header {
         padding-bottom: 0;
@@ -531,25 +524,24 @@ footer a {
         text-align: center;
         width: 100%;
     }
-
-.hero-cta, .hero-form {
+    .hero-cta, .hero-form {
     width: 100%;
+    }
+    .hero-cta {
+        text-align: center;
+    }
+    .section-title {
+        width: 80%;
+    }
+    .trainer {
+        flex: 0 70%;
+    }
+    .contact-info iframe {
+        flex: 1 100%;
+    }
 }
-.hero-cta {
-    text-align: center;
-}
-.section-title {
-    width: 80%;
-}
-.trainer {
-    flex: 0 70%;
-}
-.contact-info iframe {
-    flex: 1 100%;
-}
-}
- /* medial query for tablets and smaller  */
 
+ /* media query for tablets and smaller  */
  @media screen and (max-width: 768px) {
      section {
          padding: 30px 15px;
@@ -587,10 +579,11 @@ footer a {
          grid-column: 1/ -1;
          grid-row: -1;
      }
- }
+     .trainer-img h3, .trainer-img h4, .trainer-img::after {
+         display: none;
+     }
 
  /* media query for mobile phones and smaller */
-
  @media screen and (max-width: 575px) {
      .hero-form button {
          width: 100%;
